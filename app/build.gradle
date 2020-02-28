@@ -26,7 +26,7 @@ android {
 }
 
 dependencies {
-    def lifecycle_version = "2.1.0"
+    def lifecycle_version = "2.2.0"
 
     //glide
     implementation 'com.github.bumptech.glide:glide:4.9.0'
