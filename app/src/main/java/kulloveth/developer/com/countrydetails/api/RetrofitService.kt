@@ -11,7 +11,7 @@ import retrofit2.http.GET
 interface RetrofitService {
 
     @GET("rest/v2/all/")
-    fun fetchCharacterName(): Single<Response<CountryDetails>>
+    fun fetchCharacterName(): Single<Response<List<CountryDetails>>>
 
 
     companion object {
