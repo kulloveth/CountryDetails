@@ -19,11 +19,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.fetchCountrys().observe(this, Observer {
           it.forEach {
               Log.d("nnnn","" + it.name )
-             var names = " "
-              names += it.name + "\n"
-              nametv.append(names)
+             //var names = " "
+             // names += it.name + "\n"
+             // nametv.append(names)
           }
-            Log.d("size","" + it.size)
         })
     }
 }
