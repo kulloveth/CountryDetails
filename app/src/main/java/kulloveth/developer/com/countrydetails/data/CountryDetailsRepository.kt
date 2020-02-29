@@ -1,5 +1,6 @@
 package kulloveth.developer.com.countrydetails.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.SingleObserver
@@ -10,16 +11,12 @@ import kulloveth.developer.com.countrydetails.api.RetrofitService
 import kulloveth.developer.com.countrydetails.data.model.CountryDetails
 import retrofit2.Response
 
-class CountryDetailsRepository() {
+class CountryDetailsRepository {
 
-    private val countrysLiveData: MutableLiveData<List<CountryDetails>> by lazy {
+    val countrysLiveData: MutableLiveData<List<CountryDetails>> by lazy {
         MutableLiveData<List<CountryDetails>>().also {
             fetchCountryDetails()
         }
-    }
-
-    fun fetchCountrys(): LiveData<List<CountryDetails>> {
-        return countrysLiveData
     }
 
     fun fetchCountryDetails() {
@@ -28,7 +25,8 @@ class CountryDetailsRepository() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<Response<List<CountryDetails>>> {
                 override fun onSuccess(t: Response<List<CountryDetails>>) {
-                    countrysLiveData.value = t.body()
+                 countrysLiveData.value = t.body()
+                    Log.d("rest","" + countrysLiveData)
                 }
 
                 override fun onSubscribe(d: Disposable) {

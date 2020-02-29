@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import kulloveth.developer.com.countrydetails.data.model.CountryDetails
+import kotlinx.android.synthetic.main.activity_main.*
 import kulloveth.developer.com.countrydetails.ui.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -17,9 +17,13 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.fetchCountrys().observe(this, Observer {
-            for(c:CountryDetails in it) {
-                Log.d("con", "oncreate" + c)
-            }
+          it.forEach {
+              Log.d("nnnn","" + it.name )
+             var names = " "
+              names += it.name + "\n"
+              nametv.append(names)
+          }
+            Log.d("size","" + it.size)
         })
     }
 }
