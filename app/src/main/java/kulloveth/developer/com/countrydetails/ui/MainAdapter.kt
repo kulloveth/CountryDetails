@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.ahmadrosid.svgloader.SvgLoader
 import kotlinx.android.synthetic.main.rv_list_item.view.*
 import kulloveth.developer.com.countrydetails.R
 import kulloveth.developer.com.countrydetails.data.model.CountryDetails
@@ -36,14 +36,17 @@ class MainAdapter : ListAdapter<CountryDetails, MainAdapter.MainViewHolder>(Diff
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position),context)
     }
 
     class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(countryDetails: CountryDetails) {
+        fun bind(countryDetails: CountryDetails,context: Context) {
             itemView.country.text = countryDetails.name
-            Glide.with(Activity()).load(countryDetails.flag).into(itemView.flag)
+            SvgLoader.pluck()
+                .with(context as Activity?)
+                .setPlaceHolder(R.mipmap.ic_launcher, R.mipmap.ic_launcher)
+                .load(countryDetails.flag, itemView.flag)
         }
     }
 

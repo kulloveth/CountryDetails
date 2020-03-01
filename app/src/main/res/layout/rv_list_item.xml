@@ -4,6 +4,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    app:cardUseCompatPadding="true"
+    android:layout_margin="8dp"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,16 +14,18 @@
 
         <ImageView
             android:id="@+id/flag"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/country"
-            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/flag"
+            app:layout_constraintEnd_toEndOf="@id/flag"
             app:layout_constraintTop_toBottomOf="@id/flag" />
 
 
