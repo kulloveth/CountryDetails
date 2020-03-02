@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -34,9 +34,10 @@ dependencies {
     def lifecycle_version = "2.2.0"
 
     //glide
-   // implementation 'com.github.bumptech.glide:glide:4.9.0'
+    // implementation 'com.github.bumptech.glide:glide:4.9.0'
 
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     //retrofit
@@ -64,4 +65,5 @@ dependencies {
     implementation 'com.github.ar-android:AndroidSvgLoader:1.0.2'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
+
 }

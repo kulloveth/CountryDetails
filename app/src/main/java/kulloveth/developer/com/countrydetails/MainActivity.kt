@@ -13,20 +13,10 @@ import kulloveth.developer.com.countrydetails.ui.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    val adapter = MainAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        countryRv.layoutManager = StaggeredGridLayoutManager(2,RecyclerView.VERTICAL)
-        countryRv.adapter = adapter
-
-        val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel.fetchCountrys().observe(this, Observer {
-            it.forEach {
-                Log.d("nnnn", "" + it.name)
-            }
-            adapter.submitList(it)
-        })
     }
 }
