@@ -9,5 +9,20 @@
         android:id="@+id/countrysFragment"
         android:name="kulloveth.developer.com.countrydetails.ui.countrys.CountrysFragment"
         android:label="fragment_countrys"
-        tools:layout="@layout/fragment_countrys" />
+        tools:layout="@layout/fragment_countrys" >
+        <action
+            android:id="@+id/action_countrysFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="kulloveth.developer.com.countrydetails.ui.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="countryId"
+            app:argType="kulloveth.developer.com.countrydetails.data.model.CountryDetails"
+            android:defaultValue="@null"
+            app:nullable="true" />
+    </fragment>
 </navigation>
