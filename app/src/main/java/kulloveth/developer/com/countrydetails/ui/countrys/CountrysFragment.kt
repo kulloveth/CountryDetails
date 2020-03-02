@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.fragment_countrys.*
 import kulloveth.developer.com.countrydetails.R
+import kulloveth.developer.com.countrydetails.data.model.CountryDetails
 
 
 /**
@@ -35,6 +36,13 @@ class CountrysFragment : Fragment() {
 
         countryRv.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
         countryRv.adapter = adapter
+
+        adapter.setUpListener(object: CountrysAdapter.ItemCLickedListener{
+            override fun onItemClicked(countryDetails: CountryDetails) {
+
+            }
+
+        })
 
         val viewModel = ViewModelProvider(this)[CountrysViewModel::class.java]
         viewModel.fetchCountrys().observe(this, Observer {

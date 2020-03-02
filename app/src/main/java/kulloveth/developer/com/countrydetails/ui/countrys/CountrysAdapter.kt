@@ -18,6 +18,7 @@ class CountrysAdapter : ListAdapter<CountryDetails, CountrysAdapter.MainViewHold
 ) {
 
     lateinit var context: Context
+    lateinit var mItemCLicked: ItemCLickedListener
 
 
     class DiffCallback : DiffUtil.ItemCallback<CountryDetails>() {
@@ -40,18 +41,33 @@ class CountrysAdapter : ListAdapter<CountryDetails, CountrysAdapter.MainViewHold
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind(getItem(position),context)
+        holder.bind(getItem(position), context)
+        holder.itemView.setOnClickListener {
+            mItemCLicked.let {
+                mItemCLicked.onItemClicked(getItem(position))
+            }
+
+        }
+
+
+    }
+    fun setUpListener(itemCLicked: ItemCLickedListener){
+        mItemCLicked = itemCLicked
     }
 
     class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(countryDetails: CountryDetails,context: Context) {
+        fun bind(countryDetails: CountryDetails, context: Context) {
             itemView.country.text = countryDetails.name
             SvgLoader.pluck()
                 .with(context as Activity?)
                 .setPlaceHolder(R.mipmap.ic_launcher, R.mipmap.ic_launcher)
                 .load(countryDetails.flag, itemView.flag)
         }
+    }
+
+    interface ItemCLickedListener {
+        fun onItemClicked(countryDetails: CountryDetails)
     }
 
 }
