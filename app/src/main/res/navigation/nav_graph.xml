@@ -20,9 +20,13 @@
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
         <argument
-            android:name="countryId"
+            android:name="countryName"
             app:argType="kulloveth.developer.com.countrydetails.data.model.CountryDetails"
-            android:defaultValue="@null"
-            app:nullable="true" />
+            app:nullable="false" />
+
+        <argument
+            android:name="countryFlag"
+            app:argType="kulloveth.developer.com.countrydetails.data.model.CountryDetails"
+            app:nullable="false" />
     </fragment>
 </navigation>

@@ -46,8 +46,11 @@ class CountrysFragment : Fragment() {
            adapter.setUpListener(object: CountrysAdapter.ItemCLickedListener{
                override fun onItemClicked(countryDetails: CountryDetails) {
 
-                   val bundle = bundleOf("countryId" to countryDetails.id )
+                   val bundle = Bundle()
+                   bundle.putString("countryName", countryDetails.name)
+                   bundle.putString("countryFlag", countryDetails.flag)
                    navController!!.navigate(R.id.action_countrysFragment_to_detailsFragment,bundle)
+                   Log.d("cor",""+countryDetails.name )
 
                }
 
