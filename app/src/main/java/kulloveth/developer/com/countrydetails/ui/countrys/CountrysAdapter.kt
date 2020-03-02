@@ -1,4 +1,4 @@
-package kulloveth.developer.com.countrydetails.ui
+package kulloveth.developer.com.countrydetails.ui.countrys
 
 import android.app.Activity
 import android.content.Context
@@ -13,7 +13,9 @@ import kotlinx.android.synthetic.main.rv_list_item.view.*
 import kulloveth.developer.com.countrydetails.R
 import kulloveth.developer.com.countrydetails.data.model.CountryDetails
 
-class MainAdapter : ListAdapter<CountryDetails, MainAdapter.MainViewHolder>(DiffCallback()) {
+class CountrysAdapter : ListAdapter<CountryDetails, CountrysAdapter.MainViewHolder>(
+    DiffCallback()
+) {
 
     lateinit var context: Context
 
@@ -32,7 +34,9 @@ class MainAdapter : ListAdapter<CountryDetails, MainAdapter.MainViewHolder>(Diff
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.rv_list_item, parent, false)
-        return MainViewHolder(view)
+        return MainViewHolder(
+            view
+        )
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {

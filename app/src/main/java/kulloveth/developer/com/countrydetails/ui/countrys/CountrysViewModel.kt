@@ -1,4 +1,4 @@
-package kulloveth.developer.com.countrydetails.ui
+package kulloveth.developer.com.countrydetails.ui.countrys
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -14,7 +14,7 @@ import kulloveth.developer.com.countrydetails.data.model.CountryDetails
 import retrofit2.Response
 import java.nio.charset.Charset
 
-class MainViewModel: ViewModel() {
+class CountrysViewModel: ViewModel() {
 
    private var countrysLiveData = MutableLiveData<List<CountryDetails>> ()
 
