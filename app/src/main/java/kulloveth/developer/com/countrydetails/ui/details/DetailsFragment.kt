@@ -49,7 +49,7 @@ class DetailsFragment : Fragment() {
             frenchTrans.text = it.fr
             japanTrans.text = it.ja
             italianTrans.text = it.it
-            persianTrans.text = it.it
+            persianTrans.text = it.fa
 
         })
         SvgLoader.pluck()

@@ -8,8 +8,9 @@
 
     <ImageView
         android:id="@+id/flag_img"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="200dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +54,7 @@
         android:text="German"
         app:layout_constraintEnd_toStartOf="@id/germanTrans"
         app:layout_constraintStart_toStartOf="@id/translation_tv"
-        app:layout_constraintTop_toBottomOf="@id/translation_tv"/>
+        app:layout_constraintTop_toBottomOf="@id/translation_tv" />
 
     <TextView
         android:id="@+id/germanTrans"
@@ -61,9 +62,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="GermanTrans"
-        app:layout_constraintStart_toEndOf="@id/german_tv"
         app:layout_constraintEnd_toEndOf="@id/translation_tv"
-        app:layout_constraintTop_toBottomOf="@id/translation_tv"/>
+        app:layout_constraintStart_toEndOf="@id/german_tv"
+        app:layout_constraintTop_toBottomOf="@id/translation_tv" />
+
     <TextView
         android:id="@+id/spanish_tv"
         android:layout_width="wrap_content"
@@ -72,7 +74,7 @@
         android:text="Spanish"
         app:layout_constraintEnd_toStartOf="@id/spanishTrans"
         app:layout_constraintStart_toStartOf="@id/translation_tv"
-        app:layout_constraintTop_toBottomOf="@id/german_tv"/>
+        app:layout_constraintTop_toBottomOf="@id/german_tv" />
 
     <TextView
         android:id="@+id/spanishTrans"
@@ -80,9 +82,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="SpanishTrans"
-        app:layout_constraintStart_toEndOf="@id/spanish_tv"
         app:layout_constraintEnd_toEndOf="@id/translation_tv"
-        app:layout_constraintTop_toBottomOf="@id/german_tv"/>
+        app:layout_constraintStart_toEndOf="@id/spanish_tv"
+        app:layout_constraintTop_toBottomOf="@id/german_tv" />
 
     <TextView
         android:id="@+id/french_tv"
@@ -92,16 +94,18 @@
         android:text="French"
         app:layout_constraintEnd_toStartOf="@id/frenchTrans"
         app:layout_constraintStart_toStartOf="@id/translation_tv"
-        app:layout_constraintTop_toBottomOf="@id/spanish_tv"/>
+        app:layout_constraintTop_toBottomOf="@id/spanish_tv" />
+
     <TextView
         android:id="@+id/frenchTrans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="FrenchTrans"
-        app:layout_constraintStart_toEndOf="@id/french_tv"
         app:layout_constraintEnd_toEndOf="@id/translation_tv"
-        app:layout_constraintTop_toBottomOf="@id/spanish_tv"/>
+        app:layout_constraintStart_toEndOf="@id/french_tv"
+        app:layout_constraintTop_toBottomOf="@id/spanish_tv" />
+
     <TextView
         android:id="@+id/japan_tv"
         android:layout_width="wrap_content"
@@ -110,16 +114,18 @@
         android:text="Japan"
         app:layout_constraintEnd_toStartOf="@id/japanTrans"
         app:layout_constraintStart_toStartOf="@id/translation_tv"
-        app:layout_constraintTop_toBottomOf="@id/french_tv"/>
+        app:layout_constraintTop_toBottomOf="@id/french_tv" />
+
     <TextView
         android:id="@+id/japanTrans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="JapanTrans"
-        app:layout_constraintStart_toEndOf="@id/japan_tv"
         app:layout_constraintEnd_toEndOf="@id/translation_tv"
-        app:layout_constraintTop_toBottomOf="@id/french_tv"/>
+        app:layout_constraintStart_toEndOf="@id/japan_tv"
+        app:layout_constraintTop_toBottomOf="@id/french_tv" />
+
     <TextView
         android:id="@+id/italian_tv"
         android:layout_width="wrap_content"
@@ -128,7 +134,7 @@
         android:text="Italian"
         app:layout_constraintEnd_toStartOf="@id/italianTrans"
         app:layout_constraintStart_toStartOf="@id/translation_tv"
-        app:layout_constraintTop_toBottomOf="@id/japan_tv"/>
+        app:layout_constraintTop_toBottomOf="@id/japan_tv" />
 
     <TextView
         android:id="@+id/italianTrans"
@@ -136,9 +142,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="ItalianTrans"
-        app:layout_constraintStart_toEndOf="@id/italian_tv"
         app:layout_constraintEnd_toEndOf="@id/translation_tv"
-        app:layout_constraintTop_toBottomOf="@id/japan_tv"/>
+        app:layout_constraintStart_toEndOf="@id/italian_tv"
+        app:layout_constraintTop_toBottomOf="@id/japan_tv" />
 
     <TextView
         android:id="@+id/persian_tv"
@@ -148,16 +154,17 @@
         android:text="Persian"
         app:layout_constraintEnd_toStartOf="@id/persianTrans"
         app:layout_constraintStart_toStartOf="@id/translation_tv"
-        app:layout_constraintTop_toBottomOf="@id/italian_tv"/>
+        app:layout_constraintTop_toBottomOf="@id/italian_tv" />
+
     <TextView
         android:id="@+id/persianTrans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="PersianTrans"
-        app:layout_constraintStart_toEndOf="@id/persian_tv"
         app:layout_constraintEnd_toEndOf="@id/translation_tv"
-        app:layout_constraintTop_toBottomOf="@id/italian_tv"/>
+        app:layout_constraintStart_toEndOf="@id/persian_tv"
+        app:layout_constraintTop_toBottomOf="@id/italian_tv" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
