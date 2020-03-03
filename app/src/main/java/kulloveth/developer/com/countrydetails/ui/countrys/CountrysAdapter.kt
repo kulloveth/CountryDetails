@@ -16,8 +16,6 @@ import kulloveth.developer.com.countrydetails.data.model.CountryDetails
 class CountrysAdapter : ListAdapter<CountryDetails, CountrysAdapter.MainViewHolder>(
     DiffCallback()
 ) {
-
-    lateinit var context: Context
     lateinit var mItemCLicked: ItemCLickedListener
 
 
@@ -33,15 +31,14 @@ class CountrysAdapter : ListAdapter<CountryDetails, CountrysAdapter.MainViewHold
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
-        context = parent.context
-        val view = LayoutInflater.from(context).inflate(R.layout.rv_list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.rv_list_item, parent, false)
         return MainViewHolder(
             view
         )
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind(getItem(position), context)
+        holder.bind(getItem(position))
         holder.itemView.setOnClickListener {
             mItemCLicked.let {
                 mItemCLicked.onItemClicked(getItem(position))
@@ -57,10 +54,10 @@ class CountrysAdapter : ListAdapter<CountryDetails, CountrysAdapter.MainViewHold
 
     class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(countryDetails: CountryDetails, context: Context) {
+        fun bind(countryDetails: CountryDetails) {
             itemView.country.text = countryDetails.name
             SvgLoader.pluck()
-                .with(context as Activity?)
+                .with(itemView.context as Activity?)
                 .setPlaceHolder(R.mipmap.ic_launcher, R.mipmap.ic_launcher)
                 .load(countryDetails.flag, itemView.flag)
         }

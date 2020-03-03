@@ -4,20 +4,15 @@ package kulloveth.developer.com.countrydetails.ui.details
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.ahmadrosid.svgloader.SvgLoader
 import kotlinx.android.synthetic.main.fragment_details.*
-import kotlinx.android.synthetic.main.rv_list_item.*
-import kotlinx.android.synthetic.main.rv_list_item.view.*
-
 import kulloveth.developer.com.countrydetails.R
-import kulloveth.developer.com.countrydetails.data.model.CountryDetails
-import kulloveth.developer.com.countrydetails.ui.countrys.CountrysAdapter
 import kulloveth.developer.com.countrydetails.ui.countrys.CountrysViewModel
 
 /**
@@ -28,6 +23,7 @@ class DetailsFragment : Fragment() {
 
     var countryName: String? = null
     var countryFlag: String? = null
+    val viewModel: CountrysViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,22 +41,15 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("corn",""+countryName)
-        country_text.text=countryName
+        Log.d("corn", "" + countryName)
+         country_text.text=countryName
+        viewModel.translationsLiveData.observe(viewLifecycleOwner, Observer {
+           // country_text.text = it.fr
+        })
         SvgLoader.pluck()
             .with(context as Activity?)
             .setPlaceHolder(R.mipmap.ic_launcher, R.mipmap.ic_launcher)
             .load(countryFlag, flag_img)
-
-           object :CountrysAdapter.ItemCLickedListener{
-               override fun onItemClicked(countryDetails: CountryDetails) {
-                   val viewModel = ViewModelProvider(this@DetailsFragment).get(CountrysViewModel::class.java)
-
-
-
-
-           }
-        }
     }
 
 

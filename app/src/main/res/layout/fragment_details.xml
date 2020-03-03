@@ -18,10 +18,146 @@
         android:id="@+id/country_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="country"
         android:gravity="center"
+        android:text="country"
         app:layout_constraintEnd_toEndOf="@id/flag_img"
         app:layout_constraintStart_toStartOf="@id/flag_img"
         app:layout_constraintTop_toBottomOf="@id/flag_img" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/country_text" />
+
+    <TextView
+        android:id="@+id/translation_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Translations"
+        app:layout_constraintEnd_toEndOf="@id/country_text"
+        app:layout_constraintStart_toStartOf="@id/country_text"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+    <TextView
+        android:id="@+id/german_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="German"
+        app:layout_constraintEnd_toStartOf="@id/germanTrans"
+        app:layout_constraintStart_toStartOf="@id/translation_tv"
+        app:layout_constraintTop_toBottomOf="@id/translation_tv"/>
+
+    <TextView
+        android:id="@+id/germanTrans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="GermanTrans"
+        app:layout_constraintStart_toEndOf="@id/german_tv"
+        app:layout_constraintEnd_toEndOf="@id/translation_tv"
+        app:layout_constraintTop_toBottomOf="@id/translation_tv"/>
+    <TextView
+        android:id="@+id/spanish_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Spanish"
+        app:layout_constraintEnd_toStartOf="@id/spanishTrans"
+        app:layout_constraintStart_toStartOf="@id/translation_tv"
+        app:layout_constraintTop_toBottomOf="@id/german_tv"/>
+
+    <TextView
+        android:id="@+id/spanishTrans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="SpanishTrans"
+        app:layout_constraintStart_toEndOf="@id/spanish_tv"
+        app:layout_constraintEnd_toEndOf="@id/translation_tv"
+        app:layout_constraintTop_toBottomOf="@id/german_tv"/>
+
+    <TextView
+        android:id="@+id/french_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="French"
+        app:layout_constraintEnd_toStartOf="@id/frenchTrans"
+        app:layout_constraintStart_toStartOf="@id/translation_tv"
+        app:layout_constraintTop_toBottomOf="@id/spanish_tv"/>
+    <TextView
+        android:id="@+id/frenchTrans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="FrenchTrans"
+        app:layout_constraintStart_toEndOf="@id/french_tv"
+        app:layout_constraintEnd_toEndOf="@id/translation_tv"
+        app:layout_constraintTop_toBottomOf="@id/spanish_tv"/>
+    <TextView
+        android:id="@+id/japan_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Japan"
+        app:layout_constraintEnd_toStartOf="@id/japanTrans"
+        app:layout_constraintStart_toStartOf="@id/translation_tv"
+        app:layout_constraintTop_toBottomOf="@id/french_tv"/>
+    <TextView
+        android:id="@+id/japanTrans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="JapanTrans"
+        app:layout_constraintStart_toEndOf="@id/japan_tv"
+        app:layout_constraintEnd_toEndOf="@id/translation_tv"
+        app:layout_constraintTop_toBottomOf="@id/french_tv"/>
+    <TextView
+        android:id="@+id/italian_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Italian"
+        app:layout_constraintEnd_toStartOf="@id/italianTrans"
+        app:layout_constraintStart_toStartOf="@id/translation_tv"
+        app:layout_constraintTop_toBottomOf="@id/japan_tv"/>
+
+    <TextView
+        android:id="@+id/italianTrans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="ItalianTrans"
+        app:layout_constraintStart_toEndOf="@id/italian_tv"
+        app:layout_constraintEnd_toEndOf="@id/translation_tv"
+        app:layout_constraintTop_toBottomOf="@id/japan_tv"/>
+
+    <TextView
+        android:id="@+id/persian_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Persian"
+        app:layout_constraintEnd_toStartOf="@id/persianTrans"
+        app:layout_constraintStart_toStartOf="@id/translation_tv"
+        app:layout_constraintTop_toBottomOf="@id/italian_tv"/>
+    <TextView
+        android:id="@+id/persianTrans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="PersianTrans"
+        app:layout_constraintStart_toEndOf="@id/persian_tv"
+        app:layout_constraintEnd_toEndOf="@id/translation_tv"
+        app:layout_constraintTop_toBottomOf="@id/italian_tv"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -25,7 +26,8 @@ import kulloveth.developer.com.countrydetails.data.model.CountryDetails
 class CountrysFragment : Fragment() {
 
     val adapter = CountrysAdapter()
-    var navController:NavController? = null
+    var navController: NavController? = null
+    val viewModel:CountrysViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,26 +40,28 @@ class CountrysFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
-
         countryRv.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
         countryRv.adapter = adapter
 
-       activity.let {
-           adapter.setUpListener(object: CountrysAdapter.ItemCLickedListener{
-               override fun onItemClicked(countryDetails: CountryDetails) {
+        activity.let {
+            adapter.setUpListener(object : CountrysAdapter.ItemCLickedListener {
+                override fun onItemClicked(countryDetails: CountryDetails) {
+                    val bundle = bundleOf(
+                        "countryName" to countryDetails.name,
+                        "countryFlag" to countryDetails.flag)
+                    viewModel.setTranslations(countryDetails.translations)
+                    navController!!.navigate(
+                        R.id.action_countrysFragment_to_detailsFragment,
+                        bundle
+                    )
+                    Log.d("cor", "" + countryDetails.name)
 
-                   val bundle = Bundle()
-                   bundle.putString("countryName", countryDetails.name)
-                   bundle.putString("countryFlag", countryDetails.flag)
-                   navController!!.navigate(R.id.action_countrysFragment_to_detailsFragment,bundle)
-                   Log.d("cor",""+countryDetails.name )
+                }
 
-               }
+            })
+        }
 
-           })
-       }
 
-        val viewModel = ViewModelProvider(this)[CountrysViewModel::class.java]
         viewModel.fetchCountrys().observe(this, Observer {
             it.forEach {
                 Log.d("nnnn", "" + it.name)
@@ -66,7 +70,7 @@ class CountrysFragment : Fragment() {
         })
     }
 
-companion object{
-    val SELECTED_ID = "selectedid"
-}
+    companion object {
+        val SELECTED_ID = "selectedid"
+    }
 }

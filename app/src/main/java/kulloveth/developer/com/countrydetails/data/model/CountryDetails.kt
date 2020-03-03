@@ -11,5 +11,7 @@ data class CountryDetails(
     val name: String,
     @SerializedName("flag")
     @Expose
-    val flag: String
+    val flag: String,
+    @SerializedName("translations")
+    val translations: Translations
 ) : Serializable
