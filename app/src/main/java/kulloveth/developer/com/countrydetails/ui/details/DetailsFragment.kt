@@ -42,9 +42,15 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("corn", "" + countryName)
-         country_text.text=countryName
+        country_text.text = countryName
         viewModel.translationsLiveData.observe(viewLifecycleOwner, Observer {
-           // country_text.text = it.fr
+            germanTrans.text = it.de
+            spanishTrans.text = it.es
+            frenchTrans.text = it.fr
+            japanTrans.text = it.ja
+            italianTrans.text = it.it
+            persianTrans.text = it.it
+
         })
         SvgLoader.pluck()
             .with(context as Activity?)
