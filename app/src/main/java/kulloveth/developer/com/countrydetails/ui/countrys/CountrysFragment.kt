@@ -50,6 +50,7 @@ class CountrysFragment : Fragment() {
                         "countryFlag" to countryDetails.flag
                     )
                     viewModel.setTranslations(countryDetails.translations)
+                    viewModel.setLanguages(countryDetails.language)
                     navController!!.navigate(
                         R.id.action_countrysFragment_to_detailsFragment,
                         bundle
