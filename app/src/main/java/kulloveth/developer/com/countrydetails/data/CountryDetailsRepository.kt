@@ -1,7 +1,6 @@
 package kulloveth.developer.com.countrydetails.data
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,8 +24,8 @@ class CountryDetailsRepository {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<Response<List<CountryDetails>>> {
                 override fun onSuccess(t: Response<List<CountryDetails>>) {
-                 countrysLiveData.value = t.body()
-                    Log.d("rest","" + countrysLiveData)
+                    countrysLiveData.value = t.body()
+                    Log.d("rest", "" + countrysLiveData)
                 }
 
                 override fun onSubscribe(d: Disposable) {

@@ -21,9 +21,10 @@ import kulloveth.developer.com.countrydetails.ui.countrys.CountrysViewModel
 class DetailsFragment : Fragment() {
 
 
+    private lateinit var viewPagerAdapter: ViewPagerAdapter
     var countryName: String? = null
     var countryFlag: String? = null
-    val viewModel: CountrysViewModel by activityViewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,19 +44,14 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.d("corn", "" + countryName)
         country_text.text = countryName
-        viewModel.translationsLiveData.observe(viewLifecycleOwner, Observer {
-            germanTrans.text = it.de
-            spanishTrans.text = it.es
-            frenchTrans.text = it.fr
-            japanTrans.text = it.ja
-            italianTrans.text = it.it
-            persianTrans.text = it.fa
 
-        })
         SvgLoader.pluck()
             .with(context as Activity?)
             .setPlaceHolder(R.mipmap.ic_launcher, R.mipmap.ic_launcher)
             .load(countryFlag, flag_img)
+
+        viewPagerAdapter = ViewPagerAdapter(this)
+        pager.adapter = viewPagerAdapter
     }
 
 

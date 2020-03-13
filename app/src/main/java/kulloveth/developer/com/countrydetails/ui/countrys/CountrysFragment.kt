@@ -10,7 +10,6 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -27,7 +26,7 @@ class CountrysFragment : Fragment() {
 
     val adapter = CountrysAdapter()
     var navController: NavController? = null
-    val viewModel:CountrysViewModel by activityViewModels()
+    val viewModel: CountrysViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,7 +47,8 @@ class CountrysFragment : Fragment() {
                 override fun onItemClicked(countryDetails: CountryDetails) {
                     val bundle = bundleOf(
                         "countryName" to countryDetails.name,
-                        "countryFlag" to countryDetails.flag)
+                        "countryFlag" to countryDetails.flag
+                    )
                     viewModel.setTranslations(countryDetails.translations)
                     navController!!.navigate(
                         R.id.action_countrysFragment_to_detailsFragment,
@@ -70,7 +70,4 @@ class CountrysFragment : Fragment() {
         })
     }
 
-    companion object {
-        val SELECTED_ID = "selectedid"
-    }
 }
