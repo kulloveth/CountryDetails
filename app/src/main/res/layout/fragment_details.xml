@@ -39,6 +39,8 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        app:tabIndicatorColor="@color/colorPrimaryDark"
+        app:tabSelectedTextColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line" />
 
