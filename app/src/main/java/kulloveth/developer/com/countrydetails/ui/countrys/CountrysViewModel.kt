@@ -5,12 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kulloveth.developer.com.countrydetails.data.CountryDetailsRepository
 import kulloveth.developer.com.countrydetails.data.model.CountryDetails
+import kulloveth.developer.com.countrydetails.data.model.Language
 import kulloveth.developer.com.countrydetails.data.model.Translations
 
 class CountrysViewModel : ViewModel() {
 
     private var countrysLiveData = MutableLiveData<List<CountryDetails>>()
-  var translationsLiveData = MutableLiveData<Translations>()
+    var translationsLiveData = MutableLiveData<Translations>()
+    var languageLiveData = MutableLiveData<List<Language>>()
 
     fun fetchCountrys(): LiveData<List<CountryDetails>> {
         countrysLiveData = CountryDetailsRepository().countrysLiveData
@@ -18,7 +20,11 @@ class CountrysViewModel : ViewModel() {
     }
 
     fun setTranslations(translations: Translations) {
-         translationsLiveData.value = translations
+        translationsLiveData.value = translations
+    }
+
+    fun setLanguages(language: List<Language>) {
+        languageLiveData.value = language
     }
 
 

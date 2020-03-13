@@ -1,4 +1,4 @@
-package kulloveth.developer.com.countrydetails.ui.details
+package kulloveth.developer.com.countrydetails.ui.details.languages
 
 
 import android.os.Bundle
