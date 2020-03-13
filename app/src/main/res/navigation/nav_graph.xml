@@ -28,5 +28,10 @@
             android:name="countryFlag"
             app:argType="kulloveth.developer.com.countrydetails.data.model.CountryDetails"
             app:nullable="false" />
+
+        <argument
+            android:name="timeZone"
+            app:argType="kulloveth.developer.com.countrydetails.data.model.CountryDetails"
+            app:nullable="false" />
     </fragment>
 </navigation>

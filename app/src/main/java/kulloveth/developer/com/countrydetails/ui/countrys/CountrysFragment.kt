@@ -47,7 +47,8 @@ class CountrysFragment : Fragment() {
                 override fun onItemClicked(countryDetails: CountryDetails) {
                     val bundle = bundleOf(
                         "countryName" to countryDetails.name,
-                        "countryFlag" to countryDetails.flag
+                        "countryFlag" to countryDetails.flag,
+                        "timeZone" to countryDetails.timezones
                     )
                     viewModel.setTranslations(countryDetails.translations)
                     viewModel.setLanguages(countryDetails.language)

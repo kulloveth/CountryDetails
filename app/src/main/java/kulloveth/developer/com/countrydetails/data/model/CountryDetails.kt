@@ -12,6 +12,7 @@ data class CountryDetails(
     @SerializedName("flag")
     @Expose
     val flag: String,
+    val timezones : ArrayList<String>,
     @SerializedName("translations")
     val translations: Translations,
     @SerializedName("languages")

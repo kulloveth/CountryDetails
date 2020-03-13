@@ -22,12 +22,13 @@ class DetailsFragment : Fragment() {
     private lateinit var viewPagerAdapter: ViewPagerAdapter
     var countryName: String? = null
     var countryFlag: String? = null
-
+    var timeZon: ArrayList<String>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         countryName = arguments!!.getString("countryName")
         countryFlag = arguments!!.getString("countryFlag")
+        timeZon = arguments!!.getStringArrayList("timeZone")
     }
 
     override fun onCreateView(
@@ -43,6 +44,9 @@ class DetailsFragment : Fragment() {
         Log.d("corn", "" + countryName)
 
         country_text.text = countryName
+        timeZon?.forEach {
+            timeZone.text = it
+        }
 
         SvgLoader.pluck()
             .with(context as Activity?)
