@@ -8,12 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.ahmadrosid.svgloader.SvgLoader
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_details.*
 import kulloveth.developer.com.countrydetails.R
-import kulloveth.developer.com.countrydetails.ui.countrys.CountrysViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -43,6 +41,7 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("corn", "" + countryName)
+
         country_text.text = countryName
 
         SvgLoader.pluck()
@@ -52,6 +51,13 @@ class DetailsFragment : Fragment() {
 
         viewPagerAdapter = ViewPagerAdapter(this)
         pager.adapter = viewPagerAdapter
+        TabLayoutMediator(tabLayout, pager) { tab, position ->
+            when (position) {
+                0 -> tab.text = "Translation"
+                1 -> tab.text = "Languages"
+            }
+
+        }.attach()
     }
 
 

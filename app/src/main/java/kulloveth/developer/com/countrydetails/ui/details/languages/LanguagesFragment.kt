@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_languages.*
 
 import kulloveth.developer.com.countrydetails.R
@@ -33,6 +35,7 @@ class LanguagesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.adapter = adapter
+        recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
 
         activity.let {
             viewModel.languageLiveData.observe(viewLifecycleOwner, Observer {
