@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/flag_img"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +22,7 @@
         android:gravity="center"
         android:text="country"
         android:textStyle="bold"
+        android:textColor="@color/worldColor"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@id/flag_img"
         app:layout_constraintStart_toStartOf="@id/flag_img"
@@ -33,6 +34,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="TimeZone"
+        android:textColor="@color/worldColor"
         app:layout_constraintEnd_toStartOf="@id/timeZone"
         app:layout_constraintStart_toStartOf="@id/flag_img"
         app:layout_constraintTop_toBottomOf="@id/country_text" />
@@ -43,28 +45,22 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="UTC"
+        android:textColor="@color/worldColor"
         app:layout_constraintEnd_toEndOf="@id/flag_img"
         app:layout_constraintStart_toEndOf="@id/timezone_text"
         app:layout_constraintTop_toBottomOf="@id/country_text" />
 
-    <View
-        android:id="@+id/line"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/timezone_text" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:tabIndicatorColor="@color/colorPrimaryDark"
-        app:tabSelectedTextColor="@android:color/black"
+        android:layout_height="40dp"
+        app:tabBackground="@color/worldColor"
+        app:tabIndicatorColor="@android:color/white"
+        app:tabTextColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timeZone" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager"

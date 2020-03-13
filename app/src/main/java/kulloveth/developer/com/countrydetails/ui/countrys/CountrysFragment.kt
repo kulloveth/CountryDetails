@@ -39,7 +39,7 @@ class CountrysFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
-        countryRv.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+        countryRv.layoutManager = StaggeredGridLayoutManager(3, RecyclerView.VERTICAL)
         countryRv.adapter = adapter
 
         activity.let {

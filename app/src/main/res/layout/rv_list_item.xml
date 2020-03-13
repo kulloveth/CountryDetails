@@ -22,6 +22,7 @@
         <TextView
             android:id="@+id/country"
             android:gravity="center"
+            android:textColor="#08141a"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/flag"

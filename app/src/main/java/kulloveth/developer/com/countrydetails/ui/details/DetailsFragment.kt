@@ -21,7 +21,7 @@ class DetailsFragment : Fragment() {
 
     private lateinit var viewPagerAdapter: ViewPagerAdapter
     var countryName: String? = null
-    var countryFlag: String? = null
+    private var countryFlag: String? = null
     var timeZon: ArrayList<String>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
