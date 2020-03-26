@@ -13,8 +13,29 @@ Find link on how you can setup Android studio [here](https://developer.android.c
 - NavComponents [Doc](https://developer.android.com/guide/navigation)
 # Screenshot
 
+![nav_graph](https://github.com/kulloveth/CountryDetails/blob/master/app/screenshots/navComponents.PNG)
+
 - ViewModel [Doc](https://developer.android.com/topic/libraries/architecture/viewmodel)
 - LiveData [Doc](https://developer.android.com/topic/libraries/architecture/livedata)
 
 # Screenshots
 
+<table>
+<tr>
+<td>
+  
+ ![countrys](https://github.com/kulloveth/CountryDetails/blob/master/app/screenshots/countrys.png)
+ 
+ </td>
+ <td>
+  
+ ![translation](https://github.com/kulloveth/CountryDetails/blob/master/app/screenshots/translation.png)
+    
+ </td>
+   <td>
+  
+  ![languages](https://github.com/kulloveth/CountryDetails/blob/master/app/screenshots/language.png)
+  
+  </td>
+  </tr>
+</table>
