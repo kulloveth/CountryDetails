@@ -34,6 +34,7 @@ class CountrysFragment : Fragment() {
         super.onCreate(savedInstanceState)
         initViewModel()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

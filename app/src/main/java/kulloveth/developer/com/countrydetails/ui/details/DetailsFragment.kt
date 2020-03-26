@@ -26,9 +26,9 @@ class DetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        countryName = arguments!!.getString("countryName")
-        countryFlag = arguments!!.getString("countryFlag")
-        timeZon = arguments!!.getStringArrayList("timeZone")
+        countryName = arguments?.getString("countryName")
+        countryFlag = arguments?.getString("countryFlag")
+        timeZon = arguments?.getStringArrayList("timeZone")
     }
 
     override fun onCreateView(

@@ -21,9 +21,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="country"
-        android:textStyle="bold"
         android:textColor="@color/worldColor"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/flag_img"
         app:layout_constraintStart_toStartOf="@id/flag_img"
         app:layout_constraintTop_toBottomOf="@id/flag_img" />
@@ -55,12 +55,12 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/timeZone"
         app:tabBackground="@color/worldColor"
         app:tabIndicatorColor="@android:color/white"
-        app:tabTextColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/timeZone" />
+        app:tabTextColor="@android:color/white" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager"

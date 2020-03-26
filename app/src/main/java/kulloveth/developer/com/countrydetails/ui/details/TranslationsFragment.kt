@@ -2,14 +2,13 @@ package kulloveth.developer.com.countrydetails.ui.details
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_translations.*
-
 import kulloveth.developer.com.countrydetails.R
 import kulloveth.developer.com.countrydetails.ui.countrys.CountrysViewModel
 
