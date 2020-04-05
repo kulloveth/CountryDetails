@@ -49,6 +49,11 @@ class CountrysFragment : Fragment() {
 
         countryRv.layoutManager = StaggeredGridLayoutManager(3, RecyclerView.VERTICAL)
         countryRv.adapter = adapter
+
+        swipeToRefresh.setOnRefreshListener {
+            initViewModel()
+
+        }
     }
 
     fun initViewModel() {
@@ -63,6 +68,7 @@ class CountrysFragment : Fragment() {
                     Log.d("nnnn", "" + it.name)
                 }
                 adapter.submitList(it)
+                swipeToRefresh.isRefreshing = false
             })
 
             adapter.setUpListener(object : CountrysAdapter.ItemCLickedListener {
