@@ -32,7 +32,7 @@ class CountrysFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initViewModel()
+
     }
 
     override fun onCreateView(
@@ -40,6 +40,7 @@ class CountrysFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_countrys, container, false)
     }
 
@@ -50,20 +51,27 @@ class CountrysFragment : Fragment() {
         countryRv.layoutManager = StaggeredGridLayoutManager(3, RecyclerView.VERTICAL)
         countryRv.adapter = adapter
 
+        initViewModel()
         swipeToRefresh.setOnRefreshListener {
-            initViewModel()
+            viewModel.fetchCountrys().observe(requireActivity(), Observer {
+                it.forEach {
+                    Log.d("nnnn", "" + it.name)
+                }
+                adapter.submitList(it)
+                swipeToRefresh.isRefreshing = false
+            })
 
         }
     }
 
-    fun initViewModel() {
+    private fun initViewModel() {
 
         activity.let {
             viewModel = ViewModelProvider(
                 requireActivity(),
                 viewModelFactory
             ).get(CountrysViewModel::class.java)
-            viewModel.fetchCountrys().observe(this, Observer {
+            viewModel.fetchCountrys().observe(requireActivity(), Observer {
                 it.forEach {
                     Log.d("nnnn", "" + it.name)
                 }
