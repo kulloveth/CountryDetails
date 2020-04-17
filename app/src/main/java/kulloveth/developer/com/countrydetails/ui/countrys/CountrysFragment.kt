@@ -14,16 +14,18 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_countrys.*
 import kulloveth.developer.com.countrydetails.R
 import kulloveth.developer.com.countrydetails.data.model.CountryDetails
 import kulloveth.developer.com.countrydetails.ui.MainViewModelFactory
+import kulloveth.developer.com.countrydetails.utils.Progressive
 
 
 /**
  * A simple [Fragment] subclass.
  */
-class CountrysFragment : Fragment() {
+class CountrysFragment : Fragment(),Progressive {
 
     val adapter = CountrysAdapter()
     var navController: NavController? = null
@@ -32,7 +34,11 @@ class CountrysFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+            viewModel = ViewModelProvider(
+                requireActivity(),
+                viewModelFactory
+            ).get(CountrysViewModel::class.java)
+        viewModel.progressive = this
     }
 
     override fun onCreateView(
@@ -53,7 +59,7 @@ class CountrysFragment : Fragment() {
 
         initViewModel()
         swipeToRefresh.setOnRefreshListener {
-            viewModel.fetchCountrys().observe(requireActivity(), Observer {
+            viewModel.fetchCountry().observe(requireActivity(), Observer {
                 it.forEach {
                     Log.d("nnnn", "" + it.name)
                 }
@@ -66,12 +72,8 @@ class CountrysFragment : Fragment() {
 
     private fun initViewModel() {
 
-        activity.let {
-            viewModel = ViewModelProvider(
-                requireActivity(),
-                viewModelFactory
-            ).get(CountrysViewModel::class.java)
-            viewModel.fetchCountrys().observe(requireActivity(), Observer {
+
+            viewModel.fetchCountry().observe(requireActivity(), Observer {
                 it.forEach {
                     Log.d("nnnn", "" + it.name)
                 }
@@ -97,8 +99,21 @@ class CountrysFragment : Fragment() {
                 }
 
             })
-        }
 
+
+    }
+
+    override fun onStarted() {
+      progress.visibility = View.VISIBLE
+    }
+
+    override fun onSuccess() {
+     progress.visibility = View.GONE
+    }
+
+    override fun onFailure(message: String) {
+    progress.visibility = View.GONE
+        view?.let { Snackbar.make(it,message,Snackbar.LENGTH_SHORT).show() }
     }
 
 }
