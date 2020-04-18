@@ -25,7 +25,7 @@ import kulloveth.developer.com.countrydetails.utils.Progressive
 /**
  * A simple [Fragment] subclass.
  */
-class CountrysFragment : Fragment(),Progressive {
+class CountrysFragment : Fragment(), Progressive {
 
     val adapter = CountrysAdapter()
     var navController: NavController? = null
@@ -34,10 +34,10 @@ class CountrysFragment : Fragment(),Progressive {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-            viewModel = ViewModelProvider(
-                requireActivity(),
-                viewModelFactory
-            ).get(CountrysViewModel::class.java)
+        viewModel = ViewModelProvider(
+            requireActivity(),
+            viewModelFactory
+        ).get(CountrysViewModel::class.java)
         viewModel.progressive = this
     }
 
@@ -59,7 +59,7 @@ class CountrysFragment : Fragment(),Progressive {
 
         initViewModel()
         swipeToRefresh.setOnRefreshListener {
-            viewModel.fetchCountry().observe(requireActivity(), Observer {
+            viewModel.loadCountryDetails().observe(requireActivity(), Observer {
                 it.forEach {
                     Log.d("nnnn", "" + it.name)
                 }
@@ -73,47 +73,47 @@ class CountrysFragment : Fragment(),Progressive {
     private fun initViewModel() {
 
 
-            viewModel.fetchCountry().observe(requireActivity(), Observer {
-                it.forEach {
-                    Log.d("nnnn", "" + it.name)
-                }
-                adapter.submitList(it)
-                swipeToRefresh.isRefreshing = false
-            })
+        viewModel.loadCountryDetails().observe(requireActivity(), Observer {
+            it.forEach {
+                Log.d("nnnn", "" + it.name)
+            }
+            adapter.submitList(it)
+            swipeToRefresh.isRefreshing = false
+        })
 
-            adapter.setUpListener(object : CountrysAdapter.ItemCLickedListener {
-                override fun onItemClicked(countryDetails: CountryDetails) {
-                    val bundle = bundleOf(
-                        "countryName" to countryDetails.name,
-                        "countryFlag" to countryDetails.flag,
-                        "timeZone" to countryDetails.timezones
-                    )
-                    viewModel.setTranslations(countryDetails.translations)
-                    viewModel.setLanguages(countryDetails.language)
-                    navController!!.navigate(
-                        R.id.action_countrysFragment_to_detailsFragment,
-                        bundle
-                    )
-                    Log.d("cor", "" + countryDetails.name)
+        adapter.setUpListener(object : CountrysAdapter.ItemCLickedListener {
+            override fun onItemClicked(countryDetails: CountryDetails) {
+                val bundle = bundleOf(
+                    "countryName" to countryDetails.name,
+                    "countryFlag" to countryDetails.flag,
+                    "timeZone" to countryDetails.timezones
+                )
+                viewModel.setTranslations(countryDetails.translations)
+                viewModel.setLanguages(countryDetails.language)
+                navController!!.navigate(
+                    R.id.action_countrysFragment_to_detailsFragment,
+                    bundle
+                )
+                Log.d("cor", "" + countryDetails.name)
 
-                }
+            }
 
-            })
+        })
 
 
     }
 
     override fun onStarted() {
-      progress.visibility = View.VISIBLE
+        progress.visibility = View.VISIBLE
     }
 
     override fun onSuccess() {
-     progress.visibility = View.GONE
+        progress.visibility = View.GONE
     }
 
     override fun onFailure(message: String) {
-    progress.visibility = View.GONE
-        view?.let { Snackbar.make(it,message,Snackbar.LENGTH_SHORT).show() }
+        progress.visibility = View.GONE
+        view?.let { Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show() }
     }
 
 }

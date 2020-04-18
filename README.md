@@ -7,8 +7,8 @@ Find link on how you can setup Android studio [here](https://developer.android.c
 
 ### Libraries used and their documentation
 - Retrofit2 [Doc](http://square.github.io/retrofit/2.x/retrofit/)
-- Rxjava2 [Doc](http://reactivex.io/RxJava/javadoc/)
-- RxAndroid [Doc](https://javadoc.io/doc/io.reactivex/rxandroid/latest/index.html)
+- Rxjava2 [Doc](https://github.com/ReactiveX/RxJava/)
+- RxAndroid [Doc](https://github.com/ReactiveX/RxAndroid)
 - SvgLoader [Doc](https://github.com/ar-android/AndroidSvgLoader)
 - NavComponents [Doc](https://developer.android.com/guide/navigation)
 # Screenshot
