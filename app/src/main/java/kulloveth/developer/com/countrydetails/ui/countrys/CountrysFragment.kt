@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -18,8 +17,8 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_countrys.*
 import kulloveth.developer.com.countrydetails.R
 import kulloveth.developer.com.countrydetails.data.model.CountryDetails
-import kulloveth.developer.com.countrydetails.ui.MainViewModelFactory
 import kulloveth.developer.com.countrydetails.utils.Progressive
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 /**
@@ -27,18 +26,21 @@ import kulloveth.developer.com.countrydetails.utils.Progressive
  */
 class CountrysFragment : Fragment(), Progressive {
 
+
+
+    private val mViewModel: CountrysViewModel by viewModel()
+  //  private val factory =  MainViewModelFactory(CountryDetailsRepository(RetrofitService.getRetrofitInstance()))
+
     val adapter = CountrysAdapter()
     var navController: NavController? = null
-    private val viewModelFactory = MainViewModelFactory()
-    private lateinit var viewModel: CountrysViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(
-            requireActivity(),
-            viewModelFactory
-        ).get(CountrysViewModel::class.java)
-        viewModel.progressive = this
+//        mViewModel = ViewModelProvider(
+//            requireActivity(),
+//            factory
+//        ).get(CountrysViewModel::class.java)
+        mViewModel.progressive = this
     }
 
     override fun onCreateView(
@@ -59,7 +61,7 @@ class CountrysFragment : Fragment(), Progressive {
 
         initViewModel()
         swipeToRefresh.setOnRefreshListener {
-            viewModel.loadCountryDetails().observe(requireActivity(), Observer {
+            mViewModel.loadCountryDetails().observe(requireActivity(), Observer {
                 it.forEach {
                     Log.d("nnnn", "" + it.name)
                 }
@@ -73,9 +75,9 @@ class CountrysFragment : Fragment(), Progressive {
     private fun initViewModel() {
 
 
-        viewModel.loadCountryDetails().observe(requireActivity(), Observer {
-            it.forEach {
-                Log.d("nnnn", "" + it.name)
+        mViewModel.loadCountryDetails().observe(requireActivity(), Observer {
+            it.forEach {countryDetail->
+                Log.d("nnnn", "" + countryDetail.name)
             }
             adapter.submitList(it)
             swipeToRefresh.isRefreshing = false
@@ -88,8 +90,8 @@ class CountrysFragment : Fragment(), Progressive {
                     "countryFlag" to countryDetails.flag,
                     "timeZone" to countryDetails.timezones
                 )
-                viewModel.setTranslations(countryDetails.translations)
-                viewModel.setLanguages(countryDetails.language)
+                mViewModel.setTranslations(countryDetails.translations)
+                mViewModel.setLanguages(countryDetails.language)
                 navController!!.navigate(
                     R.id.action_countrysFragment_to_detailsFragment,
                     bundle

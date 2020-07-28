@@ -16,7 +16,8 @@ import kulloveth.developer.com.countrydetails.data.model.Translations
 import kulloveth.developer.com.countrydetails.utils.Progressive
 import retrofit2.Response
 
-class CountrysViewModel : ViewModel() {
+
+class CountrysViewModel(private val countryDetailsRepository: CountryDetailsRepository) : ViewModel() {
 
     var disposable = CompositeDisposable()
     var translationsLiveData = MutableLiveData<Translations>()
@@ -33,7 +34,7 @@ class CountrysViewModel : ViewModel() {
 
     fun fetchCountrys() {
         progressive?.onStarted()
-        CountryDetailsRepository().fetchCountryDetails()
+        countryDetailsRepository.fetchCountryDetails()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { progressive?.onStarted() }

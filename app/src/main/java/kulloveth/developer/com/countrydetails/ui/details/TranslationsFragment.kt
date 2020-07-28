@@ -10,32 +10,38 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_translations.*
 import kulloveth.developer.com.countrydetails.R
+import kulloveth.developer.com.countrydetails.databinding.FragmentTranslationsBinding
 import kulloveth.developer.com.countrydetails.ui.countrys.CountrysViewModel
+import org.koin.android.ext.android.bind
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.
  */
 class TranslationsFragment : Fragment() {
 
-    private val viewModel: CountrysViewModel by activityViewModels()
+    private val viewModel: CountrysViewModel by sharedViewModel()
+    private var binding:FragmentTranslationsBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_translations, container, false)
+        binding = FragmentTranslationsBinding.inflate(layoutInflater)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.translationsLiveData.observe(viewLifecycleOwner, Observer {
-            germanTrans.text = it.de
-            spanishTrans.text = it.es
-            frenchTrans.text = it.fr
-            japanTrans.text = it.ja
-            italianTrans.text = it.it
-            persianTrans.text = it.fa
+        viewModel.translationsLiveData.observe(requireActivity(), Observer {
+            binding?.germanTrans?.text = it.de
+            binding?.spanishTrans?.text = it.es
+            binding?.frenchTrans?.text = it.fr
+            binding?.japanTrans?.text = it.ja
+            binding?.italianTrans?.text = it.it
+            binding?.persianTrans?.text = it.fa
 
         })
     }

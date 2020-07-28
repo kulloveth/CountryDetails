@@ -13,15 +13,4 @@ interface RetrofitService {
     @GET("rest/v2/all")
     fun fetchCharacterName(): Single<Response<List<CountryDetails>>>
 
-
-    companion object {
-        fun getRetrofitInstance(): RetrofitService {
-            val retrofit: Retrofit = Retrofit.Builder()
-                .baseUrl("https://restcountries.eu/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build()
-            return retrofit.create(RetrofitService::class.java)
-        }
-    }
 }

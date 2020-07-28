@@ -32,6 +32,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    viewBinding{
+        enabled = true
+    }
 }
 
 dependencies {
@@ -45,9 +48,9 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     //retrofit
-    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
 
     //rxjava2
@@ -70,8 +73,12 @@ dependencies {
     implementation 'com.github.ar-android:AndroidSvgLoader:1.0.2'
 
     //navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
+
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 
     //viewpager2
     implementation "androidx.viewpager2:viewpager2:1.0.0"

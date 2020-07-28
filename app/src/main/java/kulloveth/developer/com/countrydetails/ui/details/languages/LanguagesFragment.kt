@@ -2,19 +2,18 @@ package kulloveth.developer.com.countrydetails.ui.details.languages
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_languages.*
-
 import kulloveth.developer.com.countrydetails.R
 import kulloveth.developer.com.countrydetails.ui.countrys.CountrysViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -22,7 +21,7 @@ import kulloveth.developer.com.countrydetails.ui.countrys.CountrysViewModel
 class LanguagesFragment : Fragment() {
 
     val adapter = LanguageAdapter()
-    val viewModel: CountrysViewModel by activityViewModels()
+    private val viewModel: CountrysViewModel by sharedViewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,10 +34,15 @@ class LanguagesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
         activity.let {
-            viewModel.languageLiveData.observe(viewLifecycleOwner, Observer {
+            viewModel.languageLiveData.observe(requireActivity(), Observer {
                 adapter.submitList(it)
             })
         }
